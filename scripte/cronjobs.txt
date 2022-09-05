@@ -1,0 +1,17 @@
+
+Setzte die Datei sunrise_sunset.py auf	5 0 * * *
+Täglich 5 Minuten nach 00:00 Uhr
+
+Setzte die Datei wetter_extern.py auf	0,30 * * * *
+Alle halbe Stunde
+
+Setzte die Datei copyminmax.py auf		45 23 * * *
+Täglich Nachts um 23:45 Uhr
+
+Setzte die Datei delete_intern.py auf 	0 2 */2 * * 
+02:00 Uhr morgens, alle 2 Tage
+!!!Frühestens 2 Tage nach Start der Datenübertragung der Klimasensoren aktivieren!!!
+
+Setzte die Datei delete_extern.py auf 	0 2 */2 * * 
+02:00 Uhr morgens, alle 2 Tage
+!!!Frühestens 2 Tage nach Start von wetter_extern.py aktivieren!!!

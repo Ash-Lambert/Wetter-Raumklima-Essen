@@ -1,0 +1,15 @@
+#!/usr/bin/python
+import mysql.connector as mariadb
+
+mariadb_connection = mariadb.connect(host = "HOST", user = "NAME", passwd = "PASSWORT", db = "DATENBANK")
+curs = mariadb_connection.cursor()
+
+curs.execute ("INSERT INTO minmax(datum, zeit, mintemp, maxtemp, avgtemp, minhumi, maxhumi, avghumi, area) SELECT CURRENT_DATE(), NOW(), MIN(temp) AS MinTemp, MAX(temp) AS MaxTemp, ROUND (AVG(temp),1) AS schnitt, MIN(humi) AS MinHumi, MAX(humi) AS MaxHumi, ROUND(AVG(humi),1) AS schnitt, ('extern') FROM (SELECT temp, humi FROM extern WHERE datum = CURRENT_DATE)AS minmaxextern;")
+curs.execute ("INSERT INTO minmax(datum, zeit, mintemp, maxtemp, avgtemp, minhumi, maxhumi, avghumi, area) SELECT CURRENT_DATE(), NOW(), MIN(temp) AS MinTemp, MAX(temp) AS MaxTemp, ROUND (AVG(temp),1) AS schnitt, MIN(humi) AS MinHumi, MAX(humi) AS MaxHumi, ROUND(AVG(humi),1) AS schnitt, ('draussen') FROM (SELECT temp, humi FROM draussen WHERE datum = CURRENT_DATE)AS minmaxdraussen;")
+curs.execute ("INSERT INTO minmax(datum, zeit, mintemp, maxtemp, avgtemp, minhumi, maxhumi, avghumi, area) SELECT CURRENT_DATE(), NOW(), MIN(temp) AS MinTemp, MAX(temp) AS MaxTemp, ROUND (AVG(temp),1) AS schnitt, MIN(humi) AS MinHumi, MAX(humi) AS MaxHumi, ROUND(AVG(humi),1) AS schnitt, ('wohnzimmer') FROM (SELECT temp, humi FROM wohnzimmer WHERE datum = CURRENT_DATE)AS minmaxwz;")
+curs.execute ("INSERT INTO minmax(datum, zeit, mintemp, maxtemp, avgtemp, minhumi, maxhumi, avghumi, area) SELECT CURRENT_DATE(), NOW(), MIN(temp) AS MinTemp, MAX(temp) AS MaxTemp, ROUND (AVG(temp),1) AS schnitt, MIN(humi) AS MinHumi, MAX(humi) AS MaxHumi, ROUND(AVG(humi),1) AS schnitt, ('schlafzimmer') FROM (SELECT temp, humi FROM schlafzimmer WHERE datum = CURRENT_DATE)AS minmaxsz;")
+curs.execute ("INSERT INTO minmax(datum, zeit, mintemp, maxtemp, avgtemp, minhumi, maxhumi, avghumi, area) SELECT CURRENT_DATE(), NOW(), MIN(temp) AS MinTemp, MAX(temp) AS MaxTemp, ROUND (AVG(temp),1) AS schnitt, MIN(humi) AS MinHumi, MAX(humi) AS MaxHumi, ROUND(AVG(humi),1) AS schnitt, ('flur') FROM (SELECT temp, humi FROM flur WHERE datum = CURRENT_DATE)AS minmaxflur;")
+curs.execute ("INSERT INTO minmax(datum, zeit, mintemp, maxtemp, avgtemp, minhumi, maxhumi, avghumi, area) SELECT CURRENT_DATE(), NOW(), MIN(temp) AS MinTemp, MAX(temp) AS MaxTemp, ROUND (AVG(temp),1) AS schnitt, MIN(humi) AS MinHumi, MAX(humi) AS MaxHumi, ROUND(AVG(humi),1) AS schnitt, ('bad') FROM (SELECT temp, humi FROM bad WHERE datum = CURRENT_DATE)AS minmaxbad;")
+curs.execute ("INSERT INTO minmax(datum, zeit, mintemp, maxtemp, avgtemp, minhumi, maxhumi, avghumi, area) SELECT CURRENT_DATE(), NOW(), MIN(temp) AS MinTemp, MAX(temp) AS MaxTemp, ROUND (AVG(temp),1) AS schnitt, MIN(humi) AS MinHumi, MAX(humi) AS MaxHumi, ROUND(AVG(humi),1) AS schnitt, ('kueche') FROM (SELECT temp, humi FROM kueche WHERE datum = CURRENT_DATE)AS minmaxkueche;")
+mariadb_connection.commit()
+mariadb_connection.close()
