@@ -10,8 +10,8 @@ Täglich Nachts um 23:45 Uhr
 
 Setzte die Datei delete_intern.py auf 	0 2 */2 * * 
 02:00 Uhr morgens, alle 2 Tage
-!!!Frühestens 2 Tage nach Start der Datenübertragung der Klimasensoren aktivieren!!!
+!!!Frühestens 4 Tage nach Start der Datenübertragung der Klimasensoren aktivieren!!!
 
 Setzte die Datei delete_extern.py auf 	0 2 */2 * * 
 02:00 Uhr morgens, alle 2 Tage
-!!!Frühestens 2 Tage nach Start von wetter_extern.py aktivieren!!!
+!!!Frühestens 4 Tage nach Start von wetter_extern.py aktivieren!!!
