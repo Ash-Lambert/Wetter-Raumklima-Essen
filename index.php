@@ -388,7 +388,7 @@
 </div>
 </a>
 </div>
-<a href="medien/filme.htm">
+<a href="medien/index.php">
 <div class="mainpagebutton8">
 <img class="mainPageImage" src="img/media01.png">
 <p class="mainPageText">Medien</p>
